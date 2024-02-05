@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services</title>
+    <link rel="stylesheet" href="home.css">
+    <script>
+        function moreDetails1() {
+            location.assign('preventive-maintenance-service.html');
+        }
+        function moreDetails2() {
+            location.assign('body-repair-service.html');
+        }
+        function moreDetails3() {
+            location.assign('car-care-service.html');
+        }
+        function logout() {
+            sessionStorage.clear();
+            alert('Logged out successfully');
+            location.assign('home.html');
+        }
+        function login() {
+            location.assign('login.html');
+        }
+
+    </script>
+    <style>
+        button {
+            margin: 10px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <header>
+        <h1 id="head">AutoMob-Mechanic</h1>
+        <nav class="navbar">
+            <div class="part1">
+                <ul>
+                    <li><a class="active" href="home.html">Home</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li id="hid1"><a href="booking.html">Booking</a></li>
+                    <li id="hid2"><a href="report.html">Report</a></li>
+                </ul>
+            </div>
+            <div class="part2">
+                <p id="text"></p>
+            </div>
+            <div class="part3">
+                <ul>
+                    <li id="hid3"><button onclick="login()" class="js">LogIn</button></li>
+                    <li id="hid4"><button onclick="logout()" class="js">Logout</button></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <div id="servbody">
+        <h1>List of Services</h1>
+        <div id="serv">
+            <div>
+                <h3><a href="preventive-maintenance-service.html">Preventive-maintenance-service</a></h3>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis aspernatur perspiciatis soluta ea
+                    dolorem blanditiis animi nostrum aut non officia obcaecati, aliquid ad quisquam rem deserunt nulla
+                    ipsum? Inventore, vel.</p>
+                <button onclick="moreDetails1()">More Details</button>
+            </div>
+            <div>
+                <h3><a href="body-repair-service.html">Body-repair-service</a></h3>
+                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laudantium, nulla nobis veniam praesentium
+                    optio sit enim ad odio assumenda excepturi quidem nesciunt blanditiis provident, quo atque quasi
+                    quod possimus sed!</p>
+                <button onclick="moreDetails2()">More Details</button>
+            </div>
+            <center>
+                <div id="ser3">
+                    <h3><a href="car-care-service.html">Car-care-service</a></h3>
+                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Harum assumenda temporibus praesentium
+                        eos nihil eaque sed provident? Minus explicabo deleniti suscipit repellendus odio aliquid,
+                        placeat nobis. Consequatur quis minima autem?</p>
+                    <button onclick="moreDetails3()">More Details</button>
+                </div>
+            </center>
+        </div>
+    </div>
+    <footer>
+        <div>&copy; AutoMob-Mechanic Pvt Ltd</div>
+    </footer>
+    <script>
+        document.getElementById("text").innerHTML = "Welcome " + sessionStorage.getItem('loggedInUserName');
+        if (sessionStorage.getItem('role') == "admin") {
+            document.getElementById("hid1").style.display = "none";
+        }
+        else {
+            document.getElementById("hid2").style.display = "none";
+        }
+
+        if (sessionStorage.getItem('loggedInUserName') == null) {
+            document.getElementById("hid4").style.display = "none";
+        }
+        else {
+            document.getElementById("hid3").style.display = "none";
+        }
+
+    </script>
+
+</body>
+
+</html>

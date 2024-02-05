@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Report</title>
+    <style>
+        h1{
+            text-align: center;
+            color:rgb(228, 12, 12);
+        }
+        body{
+            background-image: url("report.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Booking Report</h1>
+    <table border="1px" align="center" bgcolor=" pink" cellpadding="10px" cellspacing="10px">
+        <thead>
+            <tr>
+                <th>Booking ID</th>
+                <th>Name</th>
+                <th>Service</th>
+                <th>Appointment Date</th>
+            </tr>
+        </thead>
+        <tbody id="body">
+
+        </tbody>
+
+    </table>
+    <script>
+        
+        var bookingData = localStorage.getItem('user');
+        console.log(bookingData);
+        var jsonData = JSON.parse(bookingData);
+        console.log(jsonData);
+        console.log(jsonData.length)
+        buildTable(jsonData)
+
+        function buildTable(data) {
+            var table = document.getElementById('body')
+            for (var i = 0; i < jsonData.length; i++) {
+                var row = `<tr>
+                    <td>${data[i].bookingId}</td>
+                    <td>${data[i].name}</td>
+                    <td>${data[i].service}</td>
+                    <td>${data[i].appodate}</td>
+                </tr>`
+                table.innerHTML+=row
+            }
+        }
+    
+</script>
+
+</body>
+
+</html>

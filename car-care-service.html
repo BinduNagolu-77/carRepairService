@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Preventive Maintenance Service</title>
+    <script src="service.js"></script>
+    <link rel="stylesheet" href="services3.css">
+    <link rel="stylesheet" href="home.css">
+
+    <script>
+        function bookService() {
+            const serv = document.getElementById("ser").innerText;
+            sessionStorage.setItem("service", serv);
+            location.assign('booking.html');
+        }
+        function logout() {
+            sessionStorage.clear();
+            alert('Logged out successfully');
+            location.assign('home.html');
+        }
+        function login() {
+            location.assign('login.html');
+        }
+    </script>
+</head>
+
+<body>
+    <header>
+        <h1 id="head">AutoMob-Mechanic</h1>
+        <nav class="navbar">
+            <div class="part1">
+                <ul>
+                    <li><a class="active" href="home.html">Home</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li id="hid1"><a href="booking.html">Booking</a></li>
+                    <li id="hid2"><a href="report.html">Report</a></li>
+                </ul>
+            </div>
+            <div class="part2">
+                <p id="text"></p>
+            </div>
+            <div class="part3">
+                <ul>
+                    <li id="hid3"><button onclick="login()" class="js">LogIn</button></li>
+                    <li id="hid4"><button onclick="logout()" class="js">Logout</button></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <div class="servbody">
+        <div class="offer">
+            <h4>Offer ends in: <span id="countdownTimer">10 minutes 0 seconds</span></h4>
+        </div>
+        <center>
+            <div class="prev">
+                <p id="ser">Car Care Service</p>
+                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Autem eveniet, in error dolore pariatur
+                    quos tempora ratione iure nulla magni maxime incidunt, quia iusto, corrupti numquam dignissimos
+                    aliquid ab soluta! Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis maiores explicabo
+                    earum illo laboriosam quo officia quam labore deserunt eveniet repellat accusantium ipsa sequi quis,
+                    ab rem inventore fugiat veniam!</p>
+                <marquee scrollamount="12">Get 10% off on this Service</marquee>
+                <button onclick="bookService()">Book Service</button>
+            </div>
+        </center>
+    </div>
+    <footer>
+        <div>&copy; AutoMob-Mechanic Pvt Ltd</div>
+    </footer>
+    <script>
+        document.getElementById("text").innerHTML = "Welcome " + sessionStorage.getItem('loggedInUserName');
+        if (sessionStorage.getItem('role') == "admin") {
+            document.getElementById("hid1").style.display = "none";
+        }
+        else {
+            document.getElementById("hid2").style.display = "none";
+        }
+
+        if (sessionStorage.getItem('loggedInUserName') == null) {
+            document.getElementById("hid4").style.display = "none";
+        }
+        else {
+            document.getElementById("hid3").style.display = "none";
+        }
+
+    </script>
+    
+</body>
+
+</html>

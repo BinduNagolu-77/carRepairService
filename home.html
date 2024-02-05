@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutoMob-Mechanic Page</title>
+    <link rel="stylesheet" href="home.css">
+</head>
+<script>
+    function exploreMore() {
+        location.assign('services.html');
+    }
+    function logout(){
+        sessionStorage.clear();
+        alert('Logged out successfully');
+        location.assign('home.html');
+    }
+    function login(){
+        location.assign('login.html');
+    }
+</script>
+
+<body>
+    <header>
+        <h1 id="head">AutoMob-Mechanic</h1>
+        <nav class="navbar">
+            <div class="part1">
+                <ul>
+                    <li><a class="active" href="home.html">Home</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li id="hid1"><a href="booking.html">Booking</a></li>
+                    <li id="hid2"><a href="report.html">Report</a></li>
+                </ul>
+            </div>
+            <div class="part2">
+                <p id="text"></p>
+            </div>
+            <div class="part3">
+                <ul>
+                    <li id="hid3"><button onclick="login()" class="js">LogIn</button></li>
+                    <li id="hid4"><button onclick="logout()" class="js">Logout</button></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <section>
+        <div class="banner">
+            <img src="banner.jpg" alt="banner" id="banimg">
+            <p style="text-align: center; font-size: large;"><strong><span
+                        style="font-size: larger;">About</span></strong> <br><br><strong>AutoMob-Mechanic </strong>lorem
+                ipsum dolor sit amet consectetur adipisicing elit. Dolorum adipisci quidem sapiente consequuntur,
+                consequatur provident id perspiciatis. Totam fugiat, ex quis corporis necessitatibus nobis laudantium
+                facilis inventore. Quia, asperiores magni?ipsum dolor sit amet consectetur adipisicing elit. Quisquam
+                fuga beatae distinctio accusantium expedita ut suscipit numquam aspernatur quae, ab, quis ipsum hic
+                asperiores at dolorem nihil iure deserunt deleniti.Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sint quisquam suscipit mollitia illo
+                eligendi ut assumenda reiciendis architecto, eveniet numquam aspernatur quos odio doloremque sequi
+                atque impedit recusandae natus minus.Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                Praesentium unde labore, neque facere exercitationem quos officia.
+
+            </p>
+
+
+        </div>
+        <p style="font-size: large;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse asperiores maiores
+            dolorem aliquam eos. Libero minima optio atque nulla. Quibusdam dolores quae provident ipsa nam, possimus
+            reprehenderit totam fugiat nulla! Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea corporis unde
+            fugit enim. Hic beatae ex minus dolor facere quam saepe quas pariatur quae similique. Consequatur neque
+            assumenda ducimus ratione!</p>
+        <div class="buttondis">
+            <button id="button" onclick="exploreMore()">Explore More</button>
+        </div>
+
+    </section><br>
+    <footer>
+        <div>&copy; AutoMob-Mechanic Pvt Ltd</div>
+    </footer>
+    <script>
+        document.getElementById("text").innerHTML = "Welcome " + sessionStorage.getItem('loggedInUserName');
+        if (sessionStorage.getItem('role') == "admin") {
+            document.getElementById("hid1").style.display = "none";
+        }
+        else {
+            document.getElementById("hid2").style.display = "none";
+        }
+
+        if (sessionStorage.getItem('loggedInUserName') == null){
+            document.getElementById("hid4").style.display = "none";
+        }
+        else{
+            document.getElementById("hid3").style.display = "none";
+        }
+
+    </script>
+
+</body>
+
+</html>

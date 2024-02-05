@@ -1,0 +1,31 @@
+body {
+  background-image: url("login.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  overflow: hidden;
+}
+.login {
+  background-color: rgb(160, 157, 173, 0.6);
+  text-align: center;
+  padding: 20px;
+  margin: 30%;
+  margin-top: 2%;
+  height: 350px;
+  width: 350px;
+}
+#form {
+  background-color: rgb(160, 157, 173, 0.6);
+  text-align: center;
+  padding: 20px;
+  height: 305px;
+  width: 350px;
+}
+#bookbt {
+  color: red;
+  margin: 15px;
+  padding: 5px;
+  width: 70px;
+  height: 30px;
+}
+
+

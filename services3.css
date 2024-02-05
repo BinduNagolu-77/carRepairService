@@ -1,0 +1,40 @@
+.prev {
+  width: 70%;
+  align-items: center;
+  padding: 10px;
+  box-sizing: border-box;
+  border: 1px solid rgb(65, 64, 64);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 50px;
+ background-color: rgba(197, 199, 190, 0.6);
+}
+marquee{
+  color:red;
+  font-size: larger;
+
+}
+button {
+  margin: 10px;
+  color: rgb(210, 62, 12);
+}
+#ser{
+    color: rgb(64, 18, 189);
+    font-size:25px;
+}
+.offer{
+    display: flex;
+    justify-content: end;
+}
+span{
+    color:red;
+    
+}
+
+.servbody{
+  background-image: url("servicebg.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 32em;
+}

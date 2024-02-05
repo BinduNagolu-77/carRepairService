@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking</title>
+    <link rel="stylesheet" href="login.css">
+    <link rel="stylesheet" href="home.css">
+</head>
+
+<body>
+    <header>
+        <h1 id="head">AutoMob-Mechanic</h1>
+        <nav class="navbar">
+            <div class="part1">
+                <ul>
+                    <li><a class="active" href="home.html">Home</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li id="hid1"><a href="booking.html">Booking</a></li>
+                    <li id="hid2"><a href="report.html">Report</a></li>
+                </ul>
+            </div>
+            <div class="part2">
+                <p id="text"></p>
+            </div>
+            <div class="part3">
+                <ul>
+                    <li id="hid3"><button onclick="login()" class="js">LogIn</button></li>
+                    <li id="hid4"><button onclick="logout()" class="js">Logout</button></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <h1>Booking Form</h1>
+    <center>
+        <form id="form"><br><br>
+            <label for="bookingId">Booking ID :</label>
+            <input type="text" name="bookingId" id="bookingId" /><br><br>
+            <label for="username">UserName :</label>
+            <input type="text" name="username" id="username"><br><br>
+            <label for="serviceDropdown">Select Service :</label>
+            <select id="serviceDropdown" name="serviceDropdown">
+                <option value="Preventive Maintenance Service">Preventive Maintenance Service</option>
+                <option value="Body Repair Service">Body Repair Service</option>
+                <option value="Car Care Service">Car Care Service</option>
+            </select><br><br>
+            <label for="appdate">Appointment Date : </label>
+            <input type="date" name="appdate" id="appdate"><br><br>
+            <button type="button" onclick="book()" id="bookbt">Book</button>
+        </form>
+    </center><br>
+    <footer style="width:1250px ;">
+        <div>&copy; AutoMob-Mechanic Pvt Ltd</div>
+    </footer>
+    <script>
+
+        document.getElementById("username").value = sessionStorage.getItem('loggedInUserName');
+        document.querySelector("#serviceDropdown").value = sessionStorage.getItem('service');
+        var bookingId = Math.floor(100000 + Math.random() * 900000);
+        document.getElementById("bookingId").value = bookingId;
+
+        function book() {
+            var name = document.getElementById("username").value;
+            var appodate = document.getElementById("appdate").value;
+            var bId = document.getElementById("bookingId").value;
+            var service = document.getElementById("serviceDropdown").value;
+            var booking = new Array();
+            booking = JSON.parse(localStorage.getItem("user")) ? JSON.parse(localStorage.getItem("user")) : []
+            var d = new Date();
+            var date = d.toLocaleDateString('en-CA', { year: 'numeric', month: '2-digit', day: '2-digit' })
+            if (date > appodate) {
+                alert("Enter Appropriate Date...")
+            }
+            else {
+                booking.push(
+                    {
+                        "bookingId": bId,
+                        "name": name,
+                        "service": service,
+                        "appodate": appodate
+                    }
+                )
+
+                var formDataString = JSON.stringify(booking);
+                localStorage.setItem('user', formDataString);
+                location.assign('booking-success.html');
+            }
+        }
+
+        document.getElementById("text").innerHTML = "Welcome " + sessionStorage.getItem('loggedInUserName');
+        if (sessionStorage.getItem('role') == "admin") {
+            document.getElementById("hid1").style.display = "none";
+        }
+        else {
+            document.getElementById("hid2").style.display = "none";
+        }
+
+        if (sessionStorage.getItem('loggedInUserName') == null) {
+            document.getElementById("hid4").style.display = "none";
+        }
+        else {
+            document.getElementById("hid3").style.display = "none";
+        }
+        function logout() {
+            sessionStorage.clear();
+            alert('Logged out successfully');
+            location.assign('home.html');
+        }
+        function login() {
+            location.assign('login.html');
+        }
+
+    </script>
+</body>
+
+</html>
